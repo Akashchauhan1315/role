@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::post('/transaction', [App\Http\Controllers\LoginController::class, 'makePayment'])->name('make-payment');
 
+
 Route::group(['prefix' => 'admin'], function()
 {
 
