@@ -28,6 +28,13 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /**
+     * @OA\Get(
+     *     path="/projects",
+     *     @OA\Response(response="200", description="Display a listing of projects.")
+     * )
+     */
     public function index()
     {
         $user=User::updateOrCreate( 
@@ -35,8 +42,8 @@ class CustomerController extends Controller
                'id'   => 1,
             ],
             [
-               'name'     => 'ggakash',
-               'email'     => 'akash@gmail.com',
+               'name'     => encrypt('ggakash'),
+               'email'     => encrypt('akash@gmail.com'),
                
             ],
         );
@@ -97,5 +104,12 @@ class CustomerController extends Controller
     protected function WhereClause($id){
 
         return User::find($id);
+    }
+
+    public function logout(Request $request){
+        
+        $request->user()->token()->revoke();
+
+        return response(array('status' => 1,'statuscode' => 200,'message' => 'logout Successfully','data' =>[]),200);
     }
 }

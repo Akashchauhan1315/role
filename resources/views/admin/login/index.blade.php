@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="EeKlYkJPGbeeHwnFhVGI9mTUsMORr7iS4H5I2dyR">
-    <title>TYABEE</title>
+    <title>Farmart-Admin</title>
     <link rel="stylesheet" href="{{ asset('/admin/vendor/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css') }}">                                                                          
@@ -21,7 +21,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ route('login.index')}}"><b>TYABEE</b></a>
+            <a href="{{ route('login.index')}}"><b>Farmart-Admin</b></a>
         </div>
         <div class="card">
             <div class="card-body login-card-body">

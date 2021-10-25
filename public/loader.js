@@ -1,4 +1,4 @@
-$(document).ready(function(){
+// $(document).ready(function(){
 
-    $(".loader").css('display','none');
-})
+//     $(".loader").css('display','none');
+// });

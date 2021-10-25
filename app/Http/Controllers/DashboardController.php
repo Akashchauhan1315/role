@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Property;
+
 class DashboardController extends Controller
 {
     /**
@@ -80,5 +82,11 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function GoogleMapFilter(Request $request){
+
+        return Property::GoogleAddress($request);
+
     }
 }

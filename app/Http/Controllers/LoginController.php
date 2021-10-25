@@ -8,6 +8,12 @@ use Stripe;
 
 use Session;
 
+use Validator;
+
+use Auth;
+
+use App\Http\Requests\Loginvalidation;
+
 class LoginController extends Controller
 {
     /**
@@ -38,7 +44,43 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try{
+
+            $validator = Validator::make($request->all(), [ 
+
+                'email' => 'required|email',
+
+                'password' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+
+
+                return response(array('success' => 0, 'statuscode' => 400, 'message' =>
+                    $validator->errors()), 400);
+            }
+
+
+            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ])){
+
+                $user=Auth::user();
+
+                $user['token'] =  $user->createToken('angular')->accessToken;
+
+                return response(array('success' => 1,'statuscode' => 200, 'data' => $user,'message' => 'login successfully !'),200);
+            }else
+            {
+
+                return response(array('success' =>0,'statuscode' => 400,'message' => 'Email and Password wrong'),400);
+
+            }
+            
+
+        }catch(Expection $e){
+
+            return response(array('success' =>0,'statuscode' => 400,'message' => $e->getMessage()),400);
+        }
     }
 
     /**

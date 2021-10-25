@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    var baseURL="http://localhost/role/public/";
     var first = 0;
     var secondtime = 0;
+    var baseURL="http://localhost/role/public";
     if (first == 0) {
         function initialize() {
           
@@ -20,19 +20,13 @@ $(document).ready(function () {
                         position.coords.longitude +
                         ")";
 
-                    latitude = -37.8329513;
+                    latitude = position.coords.latitude;
 
-                    longitude = 144.9339125;
+                    longitude = position.coords.longitude;
 
                     $("#dd34").val(latitude);
 
-                    //alert('dd');
-
                     $("#dd1").val(longitude);
-
-                    $("#latitudelogin").val(latitude);
-
-                    $("#longitudelogin").val(longitude);
                     $.ajax({
                         async: false,
                         url: baseURL + "/GoogleMapAddress",
@@ -162,7 +156,7 @@ $(document).ready(function () {
                             locations[i].latitude,
                             locations[i].longitude
                         ),
-                        title: locations[i].street_address,
+                        title: locations[i].city,
                         map: map,
                         icon: "images/icon-blue.png",
                     });
@@ -178,21 +172,12 @@ $(document).ready(function () {
                             }
                             
                             
-                            map.setCenter(new google.maps.LatLng(-37.8135857, 144.9666155));
+                            //map.setCenter(new google.maps.LatLng(-37.8135857, 144.9666155));
 
-                            var latitude1 = locations[i].latitude;
-                            var longitude1 = locations[i].longitude;
-                            var latitude2 = latitude;
-                            var longitude2 = longitude;
-
-                            var distance1 = google.maps.geometry.spherical.computeDistanceBetween(
-                                new google.maps.LatLng(latitude1, longitude1),
-                                new google.maps.LatLng(latitude2, longitude2)
-                            );
-                            var distance = Math.ceil(distance1) + "m";
-                            
+                    
+                            alert('akash');
                             return function () {
-                                
+                                alert('gg');
                                 infowindow.close();
                                 if (
                                     locations[i].description !== "" ||

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertysTable extends Migration
+class CreateSubCatgeoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePropertysTable extends Migration
      */
     public function up()
     {
-        Schema::create('propertys', function (Blueprint $table) {
+        Schema::create('sub_catgeories', function (Blueprint $table) {
             $table->id();
-            $table->string('propertyname');
-            $table->double('longitude');
-            $table->double('latitude');
-            $table->string('city');
+            $table->string('name',80)->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePropertysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('propertys');
+        Schema::dropIfExists('sub_catgeories');
     }
 }
